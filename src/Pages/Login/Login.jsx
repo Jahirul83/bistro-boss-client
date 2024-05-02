@@ -1,18 +1,35 @@
-
+import { useEffect, useRef, useState } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+    const captchaRef = useRef(null);
+    const [disabled, setDisabled] = useState(true);
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
 
-
-
-    const handleLogin = (event) =>{
+    const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(event);
-        console.log(email,password);
+        console.log(email, password);
 
     }
+
+    const handleValidateCaptcha = () => {
+        const userCaptchaValue = captchaRef.current.value;
+        console.log(userCaptchaValue);
+        if (validateCaptcha(userCaptchaValue)) {
+            setDisabled(false);
+        }
+        else {
+            setDisabled(true);
+        }
+    }
+
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -37,8 +54,15 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <LoadCanvasTemplate></LoadCanvasTemplate>
+                            </label>
+                            <input type="text" ref={captchaRef} name="captcha" placeholder="type the text above" className="input input-bordered" required />
+                            <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs mt-2">Validate</button>
+                        </div>
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
                 </div>
