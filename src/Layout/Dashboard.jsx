@@ -32,7 +32,7 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to={'/dashboard/manageItems'}>
-                                    <FaList/>
+                                    <FaList />
                                     Manage Items
                                 </NavLink>
                             </li>
@@ -44,7 +44,7 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to={'/dashboard/users'}>
-                                    <FaUsers/>
+                                    <FaUsers />
                                     All Users
                                 </NavLink>
                             </li>
@@ -57,9 +57,9 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/reservation'}>
+                                    <NavLink to={'/dashboard/history'}>
                                         <FaCalendar />
-                                        Reservation
+                                        not History
                                     </NavLink>
                                 </li>
                                 <li>
@@ -71,13 +71,13 @@ const Dashboard = () => {
                                 <li>
                                     <NavLink to={'/dashboard/review'}>
                                         <FaAd />
-                                        Add a review
+                                        Add a Review
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/bookings'}>
+                                    <NavLink to={'/dashboard/paymentHistory'}>
                                         <FaList />
-                                        My Bookings
+                                        Real  Payment  History
                                     </NavLink>
                                 </li>
                             </>
